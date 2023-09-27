@@ -2,7 +2,7 @@ import React from 'react'
 
 const Reviewer = () => {
   return (
-    <div>Reviewer</div>
+    <div className='flex flex-1 h-screen justify-center items-center'>Reviewer</div>
   )
 }
 
