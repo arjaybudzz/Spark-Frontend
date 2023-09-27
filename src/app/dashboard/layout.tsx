@@ -6,7 +6,7 @@ import { Footer } from '@/components/footer/Footer'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Spark',
+  title: 'Main feed',
   description: 'Spark dashboard',
 }
 
