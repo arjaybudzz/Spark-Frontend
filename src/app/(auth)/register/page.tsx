@@ -57,6 +57,11 @@ const Register = () => {
     setUserRegister({...userRegister, passwordConfirmation: event.target.value});
   };
 
+  const registerData = (data: User) => {
+    registerUser(data);
+    router.push("/");
+  }
+
   return (
     <div className="flex flex-col w-screen h-screen justify-center items-center bg-homepage-background bg-cover">
       <h1 className='text-4xl text-white mb-8'>
@@ -65,7 +70,7 @@ const Register = () => {
       <form
         method="POST"
         className='flex flex-col'
-        onSubmit={handleSubmit(registerUser)}>
+        onSubmit={handleSubmit(registerData)}>
         <div className='flex flex-row w-[1000px] justify-between items-center mb-9'>
           <div className='flex flex-row w-[400px] h-auto justify-between items-center'>
             <label

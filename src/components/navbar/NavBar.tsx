@@ -2,6 +2,8 @@ import React from 'react'
 
 export const NavBar = () => {
   return (
-    <div>NavBar</div>
+    <div className='flex flex-row justify-around items-center'>
+      NavBar
+    </div>
   )
 }

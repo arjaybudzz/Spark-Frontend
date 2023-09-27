@@ -72,7 +72,7 @@ export default function Home() {
         </form>
 
         <p className="text-xl text-white mt-7">
-          Don't have an account? Sign up <Link href="/register" className="text-blue-500">here.</Link>
+          Don&apos;t have an account? Sign up <Link href="/register" className="text-blue-500">here.</Link>
         </p>
       </div>
     </main>
