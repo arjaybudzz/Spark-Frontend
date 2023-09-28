@@ -48,7 +48,7 @@ const directories = [
 
 export const NavBar = () => {
   return (
-    <div className='flex flex-1 flex-row justify-between items-center bg-blue-500 h-14 p-6 fixed right-0 left-0'>
+    <div className='flex flex-1 flex-row justify-between items-center bg-gradient-to-r from-blue-800 to-pink-600 h-14 p-6 fixed right-0 left-0'>
       <div className='flex flex-1/4'>
         <Link href="/dashboard" className='text-2xl'>Spark</Link>
       </div>
