@@ -64,7 +64,9 @@ const Post = () => {
                         onClick={() => {updateisUpvoteClicked(); addUpvote();}}>
                         <Image src={upvoteIcon} width={36} height={36} alt="upvote-icon"/>
                     </button>
-                    <span className='text-lg text-neutral-400'>
+                    <span
+                        className='text-lg'
+                        style={{color: isUpvoteClicked? "green" : "gray"}}>
                         {numUpvote}
                     </span>
                 </div>
@@ -78,7 +80,9 @@ const Post = () => {
                         }}>
                         <Image src={downvoteIcon} width={36} height={36} alt="upvote-icon"/>
                     </button>
-                    <span className='text-lg text-neutral-400'>
+                    <span
+                        className='text-lg text-neutral-400'
+                        style={{color: isDownvoteClicked? "red" : "gray"}}>
                         {numDownvote}
                     </span>
                 </div>

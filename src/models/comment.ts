@@ -1,5 +1,5 @@
 export interface Comment {
     body: string,
-    upvote?: number,
-    downvote?: number
+    upvote: number,
+    downvote: number
 }
