@@ -10,6 +10,9 @@ const config: Config = {
     extend: {
       backgroundImage: {
         'homepage-background': "url('../images/homepage.jpg')",
+        'math-background': "url('.././images/math.svg')",
+        'science-background': "url('.././images/science.svg')",
+        'ee-background': "url('.././images/electrical.svg')"
       },
     },
   },

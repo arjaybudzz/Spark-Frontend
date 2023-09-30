@@ -2,7 +2,9 @@ import React from 'react'
 
 const Coverage = () => {
   return (
-    <div>Coverage</div>
+    <div>
+      Coverage
+    </div>
   )
 }
 
