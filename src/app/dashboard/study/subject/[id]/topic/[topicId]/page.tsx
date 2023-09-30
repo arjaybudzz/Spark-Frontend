@@ -27,7 +27,7 @@ const SpecificTopic = () => {
       </div>
 
       <p className='text-white text-2xl mb-7'>
-        Ready for a quiz? Click <Link href="/dashboard/study/subject/1/topic/1/quiz" className='text-blue-500'>here</Link>!
+        Ready for a quiz? Click <Link href="/dashboard/study/subject/1/topic/1/quiz" className='text-blue-500 hover:underline'>here</Link>!
       </p>
     </div>
   )
