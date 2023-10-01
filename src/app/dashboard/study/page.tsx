@@ -10,9 +10,9 @@ const Study = () => {
         Choose A Coverage to Study
       </h1>
       <div className='flex flex-row w-full h-[500px] gap-5 justify-center items-center'>
-        <Mathematics mode={"study"}/>
-        <Science mode={"study"}/>
-        <EEProfSubjects mode={"study"}/>
+        <Mathematics majorFolder={"dashboard"} mode={"study"} coverageName={"Engineering+Mathematics"}/>
+        <Science majorFolder={"dashboard"} mode={"study"} coverageName={"Engineering+Sciences+And+Allied+Subjects"}/>
+        <EEProfSubjects majorFolder={"dashboard"} mode={"study"} coverageName={"Electrical+Engineering+Professional+Subjects"}/>
       </div>
     </div>
   )

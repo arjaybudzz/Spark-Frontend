@@ -2,7 +2,7 @@ import React from 'react'
 
 const SpecificQuiz = () => {
   return (
-    <div className='flex flex-col flex-1 justify-center items-center h-screen bg-slate-800 pt-16 overflow-hidden gap-6'>
+    <div className='flex flex-col w-screen h-screen justify-start items-center bg-homepage-background bg-cover p-6 gap-6'>
       SpecificQuiz
     </div>
   )

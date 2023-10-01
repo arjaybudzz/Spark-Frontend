@@ -7,7 +7,7 @@ const SubjectList = () => {
       <h1 className='text-white font-bold text-5xl self-start'>Subjects</h1>
       <div className='flex flex-col w-4/5
        h-auto border-2 justify-center items-center p-4'>
-        <Subject mode={"reviewer"}/>
+        <Subject subjectFolder={"dashboard"} mode={"study/Engineering+Mathematics/topic"}/>
       </div>
     </div>
   )

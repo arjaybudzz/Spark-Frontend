@@ -8,8 +8,8 @@ const Subject = (props: {[key: string]: string}) => {
         <h1 className='text-xl text-white'>
           Algebra
         </h1>
-        <div>
-          <Link href={`/dashboard/${props.mode}/subject/1/topic`} className='text-xl text-white hover:underline'>
+        <div className='flex flex-row'>
+          <Link href={`/${props.subjectFolder}/${props.mode}`} className='text-xl text-white hover:underline'>
             View Topics
           </Link>
         </div>

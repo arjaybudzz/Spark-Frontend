@@ -64,7 +64,7 @@ export const NavBar = () => {
       </div>
 
       <div className='flex flex-1/4'>
-        <h1>Name</h1>
+        <Link href="/dashboard/profile/1">Name</Link>
       </div>
     </div>
   )

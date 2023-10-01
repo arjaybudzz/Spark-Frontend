@@ -21,7 +21,6 @@ export default function Home() {
             Don&apos;t have an account? Sign up <Link href="/register" className="text-blue-500">here.</Link>
         </p>
       </div>
-
     </main>
   )
 }
