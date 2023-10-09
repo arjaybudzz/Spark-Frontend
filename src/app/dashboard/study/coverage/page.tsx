@@ -1,0 +1,43 @@
+'use client'
+
+import EEProfSubjects from '@/components/eeprofsubjects/EEProfSubjects'
+import Mathematics from '@/components/mathematics/Mathematics'
+import Science from '@/components/science/Science'
+import axios, { AxiosResponse } from 'axios'
+import React, { useEffect } from 'react'
+import { useState } from 'react'
+
+const Coverage = () => {
+
+  const [coverage, setCoverage] = useState<{[key: string]: any}[]>([])
+
+  const getCoverage = async(): Promise<void> => {
+    const url = 'http://127.0.0.1:3001/api/v1/subject_coverages';
+
+    await axios.get(url).then((response: AxiosResponse<any ,any>) => {
+      console.log(response.data.data);
+      const result = response.data.data;
+
+      result.map((element: {[key: string]: any}) => {
+        setCoverage(coverage => [...coverage, element])
+      })
+    }).catch((errors) => console.log(errors))
+  }
+
+  useEffect(() => {
+    getCoverage();
+  }, [])
+
+
+  return (
+    <div className='flex flex-col flex-1 h-screen justify-center items-center bg-homepage-background bg-cover p-20 gap-10'>
+      <div className='flex flex-row w-full h-screen justify-around items-center'>
+        <Mathematics majorFolder={"dashboard"} coverageName={coverage[0]?.attributes.name} mode={"study/coverage"}/>
+        <Science majorFolder={"dashboard"} coverageName={coverage[1]?.attributes.name} mode={"study/coverage"}/>
+        <EEProfSubjects majorFolder={"dashboard"} coverageName={coverage[2]?.attributes.name} mode={"study/coverage"}/>
+      </div>
+    </div>
+  )
+}
+
+export default Coverage

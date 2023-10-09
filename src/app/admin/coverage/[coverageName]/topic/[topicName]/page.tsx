@@ -1,35 +1,34 @@
-import React from 'react'
+'use client';
+
+import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
+import axios, { AxiosResponse } from 'axios';
+import SelectedTopic from '@/components/selectedTopic/SelectedTopic';
+import { useParams } from 'next/navigation';
 
 const SpecificTopic = () => {
-  return (
-    <div className='flex flex-col flex-1 justify-start items-center h-screen bg-homepage-background bg-cover pt-16 overflow-hidden overflow-y-scroll gap-6'>
-      <div className='bg-blue-900 h-16 flex fixed top-15 left-0 right-0 justify-center items-center'>
-        <h1 className='text-4xl text-white font-bold'>
-          LINEAR EQUATIONS
-        </h1>
-      </div>
-      <div className='pt-32 px-5 indent-10 text-justify'>
-        <p className='text-xl text-white'>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex molestias est atque laborum expedita. Sequi minima explicabo qui officia alias modi molestias sit quidem, vero fugit esse doloribus ratione odio?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex molestias est atque laborum expedita. Sequi minima explicabo qui officia alias modi molestias sit quidem, vero fugit esse doloribus ratione odio?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex molestias est atque laborum expedita. Sequi minima explicabo qui officia alias modi molestias sit quidem, vero fugit esse doloribus ratione odio?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex molestias est atque laborum expedita. Sequi minima explicabo qui officia alias modi molestias sit quidem, vero fugit esse doloribus ratione odio?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex molestias est atque laborum expedita. Sequi minima explicabo qui officia alias modi molestias sit quidem, vero fugit esse doloribus ratione odio?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex molestias est atque laborum expedita. Sequi minima explicabo qui officia alias modi molestias sit quidem, vero fugit esse doloribus ratione odio?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex molestias est atque laborum expedita. Sequi minima explicabo qui officia alias modi molestias sit quidem, vero fugit esse doloribus ratione odio?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex molestias est atque laborum expedita. Sequi minima explicabo qui officia alias modi molestias sit quidem, vero fugit esse doloribus ratione odio?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex molestias est atque laborum expedita. Sequi minima explicabo qui officia alias modi molestias sit quidem, vero fugit esse doloribus ratione odio?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex molestias est atque laborum expedita. Sequi minima explicabo qui officia alias modi molestias sit quidem, vero fugit esse doloribus ratione odio?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex molestias est atque laborum expedita. Sequi minima explicabo qui officia alias modi molestias sit quidem, vero fugit esse doloribus ratione odio?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex molestias est atque laborum expedita. Sequi minima explicabo qui officia alias modi molestias sit quidem, vero fugit esse doloribus ratione odio?
-        </p>
-      </div>
+  const params = useParams();
 
-      <p className='text-white text-2xl mb-7'>
-        Ready for a quiz? Click <Link href="/dashboard/study/subject/1/topic/1/quiz" className='text-blue-500 hover:underline'>here</Link>!
-      </p>
-    </div>
+  const [topicName, setTopicName] = useState<string>("");
+  const [topicDiscussion, setTopicDiscussion] = useState<string>("");
+
+  const getTopic = async(): Promise<void> => {
+    const url = `http://127.0.0.1:3001/api/v1/topics/${localStorage.getItem("topicId")}`;
+
+    await axios.get(url)
+    .then((response: AxiosResponse<any, any>) => {
+      console.log(response.data.data.attributes);
+      setTopicName(response.data.data.attributes.name);
+      setTopicDiscussion(response.data.data.attributes.discussion);
+    }).catch((errors) => console.log(errors))
+  }
+
+  useEffect(() => {
+    getTopic();
+  }, [])
+
+  return (
+    <SelectedTopic majorFolder={"admin"} topicName={topicName} topicDiscussion={topicDiscussion} coverageName={params.coverageName}/>
   )
 }
 

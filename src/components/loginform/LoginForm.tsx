@@ -7,8 +7,12 @@ import { useState } from 'react'
 import type { LogInData } from '@/models/loginData'
 import { yupResolver } from '@hookform/resolvers/yup'
 import Link from 'next/link'
+import axios, { AxiosResponse } from 'axios'
+import { useRouter } from 'next/navigation';
 
-const LoginForm = (props: {[key: string]: any}) => {
+const LoginForm = () => {
+
+    const router = useRouter();
 
     const [user, setUser] = useState<LogInData>({
         email: '',
@@ -32,7 +36,17 @@ const LoginForm = (props: {[key: string]: any}) => {
         setUser({ ...user, password: event.target.value })
       };
 
+      const loginUser = async (data: LogInData): Promise<void> => {
+        const url = `http://127.0.0.1:3001/api/v1/user_tokens?user[email]=${data.email}&user[password]=${data.password}`;
 
+        await axios.post(url).then((response: AxiosResponse<any, any>) => {
+          console.log(response);
+          localStorage.setItem("userId", response.data.id);
+          localStorage.setItem("userToken", response.data.user_token);
+          sessionStorage.setItem("userId", response.data.id);
+          router.push("/dashboard");
+        }).catch((errors) => console.log(errors));
+      }
 
   return (
     <div className="flex flex-col justify-center items-center flex-1 h-screen relative p-6">
@@ -40,7 +54,7 @@ const LoginForm = (props: {[key: string]: any}) => {
         <form
           method="POST"
           className='flex flex-col'
-          onSubmit={handleSubmit(props.sendData)}>
+          onSubmit={handleSubmit(loginUser)}>
           <div className="flex flex-row justify-between items-center w-[500px] mb-9">
             <label htmlFor="email-input" className="text-xl text-white">
               Email:

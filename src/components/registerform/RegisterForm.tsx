@@ -1,8 +1,11 @@
+'use client';
+
 import React, { useState } from 'react'
 import type { User } from '@/models/user'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
+import registerUser from '@/app/api/register';
 
 const RegisterForm = (props: {[key: string]: any}) => {
   const [userRegister, setUserRegister] = useState<User>({
@@ -59,7 +62,7 @@ const RegisterForm = (props: {[key: string]: any}) => {
       <form
         method="POST"
         className='flex flex-col'
-        onSubmit={handleSubmit(props.sendData)}>
+        onSubmit={handleSubmit(registerUser)}>
         <div className='flex flex-row w-[1000px] justify-between items-center mb-9'>
           <div className='flex flex-row w-[400px] h-auto justify-between items-center'>
             <label

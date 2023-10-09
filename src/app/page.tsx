@@ -1,9 +1,5 @@
-'use client';
-
-import { loginUser } from "./api/login";
 import LoginForm from "@/components/loginform/LoginForm";
 import Link from "next/link";
-
 
 export default function Home() {
 
@@ -16,9 +12,12 @@ export default function Home() {
         <p className="text-2xl text-white">Spark is an open forum web application aimed at students, intructors, engineers and other practitioners in electrical industry.</p>
       </div>
       <div className="flex flex-col flex-1 justify-center items-center">
-        <LoginForm sendData={loginUser}/>
+        <LoginForm />
         <p className="text-xl text-white mt-7">
             Don&apos;t have an account? Sign up <Link href="/register" className="text-blue-500">here.</Link>
+        </p>
+        <p className="text-xl text-white mt-7">
+            Are you an admin? Click <Link href="/admin" className="text-blue-500">here.</Link>
         </p>
       </div>
     </main>

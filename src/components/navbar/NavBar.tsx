@@ -1,52 +1,40 @@
 /* eslint-disable react/jsx-key */
-import React from 'react'
+'use client'
+
+import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import practiceIcon from 'src/images/practice.png'
-import readIcon from 'src/images/reading-book.png'
 import studyIcon from 'src/images/studying.png'
-import reviewIcon from 'src/images/reviewer.png'
-import contactIcon from 'src/images/email.png'
-import aboutIcon from 'src/images/info.png'
+import axios, { AxiosResponse } from 'axios'
+import { useParams } from 'next/navigation'
 
 const directories = [
-  {
-    id: 1,
-    icon: practiceIcon,
-    name: "Practice",
-    link: "/dashboard/practice"
-  },
-
-  {
-    id: 2,
-    icon: reviewIcon,
-    name: "Reviewers",
-    link: "/dashboard/reviewer"
-  },
-
   {
     id: 3,
     icon: studyIcon,
     name: "Study",
-    link: "/dashboard/study"
+    link: "/dashboard/study/coverage"
   },
-
-  {
-    id: 4,
-    icon: contactIcon,
-    name: "Contact",
-    link: "/dashboard/contact"
-  },
-
-  {
-    id: 5,
-    icon: aboutIcon,
-    name: "About",
-    link: "/dashboard/about"
-  }
 ]
 
 export const NavBar = () => {
+  const [userName, setUserName] = useState<string>("");
+  const [userId, setUserId] = useState<string>("");
+  const getUser = async(): Promise<void> => {
+    const url = `http://127.0.0.1:3001/api/v1/users/${sessionStorage.getItem("userId")}`;
+
+    await axios.get(url)
+    .then((response: AxiosResponse<any, any>) => {
+      console.log(response.data.data);
+      setUserName(response.data.data.attributes.first_name);
+      setUserId(response.data.data.id);
+    }).catch((errors) => console.log(errors))
+  }
+
+  useEffect(() => {
+    getUser();
+  }, [])
+
   return (
     <div className='flex flex-1 flex-row justify-between items-center bg-gradient-to-r from-blue-800 to-pink-600 h-14 p-6 fixed right-0 left-0'>
       <div className='flex flex-1/4'>
@@ -64,7 +52,7 @@ export const NavBar = () => {
       </div>
 
       <div className='flex flex-1/4'>
-        <Link href="/dashboard/profile/1">Name</Link>
+        <Link href={`/dashboard/profile/${userId}`} className='text-xl text-white font-bold'>{userName}</Link>
       </div>
     </div>
   )
