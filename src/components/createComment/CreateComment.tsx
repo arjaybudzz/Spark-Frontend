@@ -13,7 +13,7 @@ const CreateComment = (props: {[key: string]: any}) => {
   }
 
   const uploadComment = async(): Promise<void> => {
-    const url = "http://127.0.0.1:3001/api/v1/comments";
+    const url = "https://spark-9bqv.onrender.com/api/v1/comments";
     await axios.post(url,{
       user_name: `${userInfo.attributes.first_name} ${userInfo.attributes.middle_name} ${userInfo.attributes.last_name}`,
       body: commentBody
@@ -28,7 +28,7 @@ const CreateComment = (props: {[key: string]: any}) => {
   }
 
   const getCommentOwner = async(): Promise<void> => {
-    const url = `http://127.0.0.1:3001/api/v1/users/${localStorage.getItem("userId")}`;
+    const url = `https://spark-9bqv.onrender.com/api/v1/users/${localStorage.getItem("userId")}`;
     await axios.get(url).then((response: AxiosResponse<any, any>) => {
       console.log(response.data.data);
       setUserInfo(response.data.data);

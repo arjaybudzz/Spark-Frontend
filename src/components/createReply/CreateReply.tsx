@@ -11,7 +11,7 @@ const CreateReply = (props: {[key: string]: any}) => {
   }
 
   const uploadReply = async(): Promise<void> => {
-    const url = "http://127.0.0.1:3001/api/v1/replies";
+    const url = "https://spark-9bqv.onrender.com/api/v1/replies";
     await axios.post(url,{
       user_name: props.userName,
       body: replyBody

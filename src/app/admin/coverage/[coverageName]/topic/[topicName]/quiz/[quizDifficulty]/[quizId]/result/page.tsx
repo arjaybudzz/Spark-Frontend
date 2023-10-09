@@ -9,7 +9,7 @@ const Result = () => {
     const params = useParams();
     const [answerSheet, setAnswerSheet] = useState<{[key: string]: any}>({})
     const getResult = async(): Promise<void> => {
-        const url = `http://127.0.0.1:3001/api/v1/quizzes/${params.quizId}`;
+        const url = `http://0.0.0.0:3001/api/v1/quizzes/${params.quizId}`;
 
         await axios.get(url).then((response: AxiosResponse<any, any>) => {
             console.log(response.data.included);
@@ -24,7 +24,7 @@ const Result = () => {
 
     useEffect(() => {
         getResult();
-    }, [])
+    }, [getResult])
 
 
   return (

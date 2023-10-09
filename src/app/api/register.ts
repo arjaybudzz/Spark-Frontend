@@ -2,7 +2,7 @@ import axios, { AxiosResponse } from 'axios';
 import type { User } from '@/models/user';
 
 const registerUser = async (data: User): Promise<void> => {
-    const url = `http://127.0.0.1:3001/api/v1/users`;
+    const url = `https://spark-9bqv.onrender.com/api/v1/users`;
 
     await axios.post(url, {
         first_name: data.firstName,

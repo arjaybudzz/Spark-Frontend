@@ -18,7 +18,7 @@ const SubjectList = () => {
   }
 
   const getSubjects = async(): Promise<void> => {
-    const url = `http://127.0.0.1:3001/api/v1/subject_coverages/${localStorage.getItem("coverageId")}`;
+    const url = `http://0.0.0.0:3001/api/v1/subject_coverages/${localStorage.getItem("coverageId")}`;
 
     await axios.get(url)
     .then((response) => {

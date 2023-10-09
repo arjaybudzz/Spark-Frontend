@@ -21,7 +21,7 @@ export const NavBar = () => {
   const [userName, setUserName] = useState<string>("");
   const [userId, setUserId] = useState<string>("");
   const getUser = async(): Promise<void> => {
-    const url = `http://127.0.0.1:3001/api/v1/users/${sessionStorage.getItem("userId")}`;
+    const url = `https://spark-9bqv.onrender.com/api/v1/users/${sessionStorage.getItem("userId")}`;
 
     await axios.get(url)
     .then((response: AxiosResponse<any, any>) => {

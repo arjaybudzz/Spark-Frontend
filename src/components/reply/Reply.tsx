@@ -23,7 +23,7 @@ const Reply = (props: {[key: string]: any}) => {
     const [isEditedClicked, setIsEditedClicked] = useState<boolean>(false);
 
     const getReply = async(): Promise<void> => {
-        const url = `http://127.0.0.1:3001/api/v1/replies/${props.replyId}`;
+        const url = `https://spark-9bqv.onrender.com/api/v1/replies/${props.replyId}`;
         await axios.get(url).then((response: AxiosResponse<any, any>) => {
           console.log(response.data.data);
           setReplyBody(response.data.data.attributes.body);
@@ -54,7 +54,7 @@ const Reply = (props: {[key: string]: any}) => {
     }
 
     const upVoteReply = async(): Promise<void> => {
-        const url = `http://127.0.0.1:3001/api/v1/replies/${props.replyId}`;
+        const url = `https://spark-9bqv.onrender.com/api/v1/replies/${props.replyId}`;
         await axios.put(url, {
             upvote: !isUpvoteClicked? upVote + 1 : upVote - 1
         }).then((response: AxiosResponse<any, any>) => {
@@ -63,7 +63,7 @@ const Reply = (props: {[key: string]: any}) => {
     }
 
     const downVoteReply = async(): Promise<void> => {
-        const url = `http://127.0.0.1:3001/api/v1/replies/${props.replyId}`;
+        const url = `https://spark-9bqv.onrender.com/api/v1/replies/${props.replyId}`;
         await axios.put(url, {
             downvote: !isDownvoteClicked? downVote + 1 : downVote - 1
         }).then((response: AxiosResponse<any, any>) => {
@@ -72,7 +72,7 @@ const Reply = (props: {[key: string]: any}) => {
     }
 
     const getUpVoteAndDownVote = async(): Promise<void> => {
-        const url = `http://127.0.0.1:3001/api/v1/replies/${props.replyId}`;
+        const url = `https://spark-9bqv.onrender.com/api/v1/replies/${props.replyId}`;
         await axios.get(url).then((response: AxiosResponse<any, any>) => {
           console.log(response);
           setUpVote(response.data.data.attributes.upvote)
@@ -81,7 +81,7 @@ const Reply = (props: {[key: string]: any}) => {
     }
 
     const editReply = async(data: string): Promise<void> => {
-        const url = `http://127.0.0.1:3001/api/v1/replies/${props.replyId}`;
+        const url = `https://spark-9bqv.onrender.com/api/v1/replies/${props.replyId}`;
         await axios.put(url, {
             body: data
         }).then((response: AxiosResponse<any, any>) => {
@@ -90,7 +90,7 @@ const Reply = (props: {[key: string]: any}) => {
       }
 
     const deleteReply = async(): Promise<void> => {
-        const url = `http://127.0.0.1:3001/api/v1/replies/${props.replyId}`;
+        const url = `https://spark-9bqv.onrender.com/api/v1/replies/${props.replyId}`;
         await axios.delete(url, {
             headers: {
                 "Content-Type": "application/json",
@@ -102,7 +102,7 @@ const Reply = (props: {[key: string]: any}) => {
       }
 
     const getCurrentUser = async(): Promise<void> => {
-        const url = `http://127.0.0.1:3001/api/v1/users/${localStorage.getItem("userId")}`;
+        const url = `https://spark-9bqv.onrender.com/api/v1/users/${localStorage.getItem("userId")}`;
         await axios.get(url).then((response: AxiosResponse<any, any>) => {
             console.log(response)
             setCurrentUser(response.data.data.attributes);

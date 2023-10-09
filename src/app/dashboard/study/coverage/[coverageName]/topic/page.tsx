@@ -17,7 +17,7 @@ const TopicList = () => {
     }
 
     const getTopics = async(): Promise<void> => {
-      const url = `http://127.0.0.1:3001/api/v1/subjects/${localStorage.getItem("subjectId")}`;
+      const url = `https://spark-9bqv.onrender.com/api/v1/subjects/${localStorage.getItem("subjectId")}`;
 
       await axios.get(url).then((response: AxiosResponse<any, any>) => {
         console.log(response.data.included);
@@ -33,7 +33,7 @@ const TopicList = () => {
 
     useEffect(() => {
       getTopics();
-    }, [])
+    }, [getTopics])
 
     console.log(topicArray);
 

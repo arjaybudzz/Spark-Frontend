@@ -28,7 +28,7 @@ const CreateTopic = () => {
   }
 
   const createTopic = async(): Promise<void> => {
-    const url = `http://127.0.0.1:3001/api/v1/topics`;
+    const url = `https://spark-9bqv.onrender.com/api/v1/topics`;
     await axios.post(url, {
       name: topicName,
       discussion: topicDiscussion

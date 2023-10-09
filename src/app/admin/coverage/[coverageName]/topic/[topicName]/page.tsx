@@ -13,7 +13,7 @@ const SpecificTopic = () => {
   const [topicDiscussion, setTopicDiscussion] = useState<string>("");
 
   const getTopic = async(): Promise<void> => {
-    const url = `http://127.0.0.1:3001/api/v1/topics/${localStorage.getItem("topicId")}`;
+    const url = `http://0.0.0.0:3001/api/v1/topics/${localStorage.getItem("topicId")}`;
 
     await axios.get(url)
     .then((response: AxiosResponse<any, any>) => {

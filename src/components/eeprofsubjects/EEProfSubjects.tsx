@@ -5,7 +5,7 @@ import axios, { AxiosResponse } from 'axios'
 const EEProfSubjects = (props: {[key: string]: string}) => {
 
   const storeCoverageToken = async(): Promise<void> => {
-    const url = `http://127.0.0.1:3001/api/v1/subject_coverage_tokens?subject_coverage[name]=${props.coverageName}`;
+    const url = `https://spark-9bqv.onrender.com/api/v1/subject_coverage_tokens?subject_coverage[name]=${props.coverageName}`;
 
     await axios.post(url).then((response: AxiosResponse<any, any>) => {
       console.log(response.data);

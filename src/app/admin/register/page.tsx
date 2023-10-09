@@ -1,9 +1,6 @@
 'use client'
 
 import React from 'react'
-import register from '@/app/api/register';
-import RegisterForm from '@/components/registerform/RegisterForm';
-import type { User } from '@/models/user';
 import AdminRegisterForm from '@/components/admin-registerform/AdminRegisterForm';
 
 const AdminRegister = () => {

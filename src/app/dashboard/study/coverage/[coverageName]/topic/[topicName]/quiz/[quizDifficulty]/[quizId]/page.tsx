@@ -16,7 +16,7 @@ const SelectedQuiz = () => {
     const [pageNum, setPageNum] = useState<number>(1);
 
     const getQuizItems = async(page: number): Promise<void> => {
-        const url = `http://127.0.0.1:3001/api/v1/quiz_items?page=${page}`;
+        const url = `https://spark-9bqv.onrender.com/api/v1/quiz_items?page=${page}`;
         await axios.get(url, {
           headers: {
             "Content-Type": "application/json",

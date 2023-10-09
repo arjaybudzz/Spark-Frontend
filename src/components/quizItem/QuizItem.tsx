@@ -15,7 +15,7 @@ const QuizItem = (props: {[key: string]: any}) => {
   }
 
   const getQuizAnswers = async(): Promise<void> => {
-    const url = `http://127.0.0.1:3001/api/v1/quiz_items/${props.quizItemId}`;
+    const url = `https://spark-9bqv.onrender.com/api/v1/quiz_items/${props.quizItemId}`;
 
     await axios.get(url).then((response: AxiosResponse<any, any>) => {
       const result = response.data.included;
@@ -32,7 +32,7 @@ const QuizItem = (props: {[key: string]: any}) => {
   }, [])
 
   const storeQuizItemToken = async(): Promise<void> => {
-    const url = `http://127.0.0.1:3001/api/v1/quiz_item_tokens?quiz_item[problem]=${props.quizProblem}`;
+    const url = `https://spark-9bqv.onrender.com/api/v1/quiz_item_tokens?quiz_item[problem]=${props.quizProblem}`;
 
     await axios.post(url).then((response: AxiosResponse<any, any>) => {
       console.log(response.data.quiz_item_token);
@@ -41,7 +41,7 @@ const QuizItem = (props: {[key: string]: any}) => {
   }
 
   const enterQuizAnswer = async(givenAnswer: string): Promise<void> => {
-    const url = `http://127.0.0.1:3001/api/v1/quiz_answers/${localStorage.getItem("quizAnswerId")}`;
+    const url = `https://spark-9bqv.onrender.com/api/v1/quiz_answers/${localStorage.getItem("quizAnswerId")}`;
     await axios.put(url,{
       answer: givenAnswer
     }, {

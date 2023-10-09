@@ -53,7 +53,7 @@ const CreateQuizItem = (props: {[key: string]: any}) => {
     }
 
     const createQuizItem = async(): Promise<void> => {
-        const url = 'http://127.0.0.1:3001/api/v1/quiz_items';
+        const url = 'https://spark-9bqv.onrender.com/api/v1/quiz_items';
         await axios.post(url, {
             problem: problem,
             answer: answer,

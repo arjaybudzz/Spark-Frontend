@@ -15,7 +15,7 @@ const CreatePost = () => {
   }
 
   const uploadPost = async(): Promise<void> => {
-    const url = "http://127.0.0.1:3001/api/v1/posts";
+    const url = "https://spark-9bqv.onrender.com/api/v1/posts";
     await axios.post(url,{
       body: postContent
     }, {

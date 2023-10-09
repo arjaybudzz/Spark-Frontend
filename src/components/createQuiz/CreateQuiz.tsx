@@ -22,7 +22,7 @@ const CreateQuiz = () => {
   }
 
   const createQuiz = async(): Promise<void> => {
-    const url = 'http://127.0.0.1:3001/api/v1/quizzes';
+    const url = 'https://spark-9bqv.onrender.com/api/v1/quizzes';
     await axios.post(url, {
       difficulty: difficulty
     }, {

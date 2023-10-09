@@ -10,7 +10,7 @@ const Quiz = (props: {[key: string]: any}) => {
     const [isAddQuizItemClicked, setIsAddQuizItemClicked] = useState<boolean>(false);
 
     const storeQuizToken = async(): Promise<void> => {
-      const url = `http://127.0.0.1:3001/api/v1/quiz_tokens?quiz[difficulty]=${props.difficulty}`;
+      const url = `https://spark-9bqv.onrender.com/api/v1/quiz_tokens?quiz[difficulty]=${props.difficulty}`;
 
       await axios.post(url).then((response: AxiosResponse<any, any>) => {
         console.log(response.data.quiz_token);

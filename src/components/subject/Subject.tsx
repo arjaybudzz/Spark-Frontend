@@ -6,7 +6,7 @@ import axios, { AxiosResponse } from 'axios';
 const Subject = (props: {[key: string]: string}) => {
 
   const storeSubjectToken = async(): Promise<void> => {
-    const url = `http://127.0.0.1:3001/api/v1/subject_tokens?subject[name]=${props.subjectName}`;
+    const url = `https://spark-9bqv.onrender.com/api/v1/subject_tokens?subject[name]=${props.subjectName}`;
 
     await axios.post(url).then((response: AxiosResponse<any, any>) => {
       console.log(response.data.subject_id);

@@ -35,7 +35,7 @@ const AdminLoginForm = () => {
       };
 
       const loginAdmin = async (data: LogInData): Promise<void> => {
-        const url = `http://127.0.0.1:3001/api/v1/tokens?admin[email]=${data.email}&admin[password]=${data.password}`;
+        const url = `https://spark-9bqv.onrender.com/api/v1/tokens?admin[email]=${data.email}&admin[password]=${data.password}`;
 
         await axios.post(url).then((response: AxiosResponse<any, any>) => {
           console.log(response.data.token);
