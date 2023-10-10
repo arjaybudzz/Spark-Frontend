@@ -42,16 +42,16 @@ const Profile = () => {
     <div className='flex flex-1 justify-center items-center h-screen bg-slate-800 pt-16'>
         <div className='flex flex-row flex-1 h-full'>
             <div className='flex flex-col items-center w-1/4 h-full p-4 gap-4'>
-                <div className='flex flex-row items-center h-auto'>
-                    <h1 className='text-xl text-gray-300'>
+                <div className='flex flex-row items-center h-auto justify-between p-4'>
+                    <h1 className='text-md text-gray-300'>
                         Full name:
                     </h1>
-                    <h1 className='text-xl text-white'>
+                    <h1 className='text-md text-white'>
                         {firstName} {middleName} {lastName}
                     </h1>
                 </div>
 
-                <div className='flex flex-row items-center h-auto'>
+                <div className='flex flex-row items-center h-auto justify-between p-4'>
                     <h1 className='text-xl text-gray-300'>
                         Email:
                     </h1>
@@ -60,7 +60,7 @@ const Profile = () => {
                     </h1>
                 </div>
 
-                <div className='flex flex-row items-center h-auto'>
+                <div className='flex flex-row items-center h-auto justify-between p-4'>
                     <h1 className='text-xl text-gray-300'>
                         Credibility:
                     </h1>
