@@ -25,7 +25,7 @@ const SpecificTopic = () => {
 
   useEffect(() => {
     getTopic();
-  }, [getTopic])
+  }, [])
 
   return (
     <SelectedTopic majorFolder={"dashboard/study"} topicName={topicName} topicDiscussion={topicDiscussion} coverageName={params.coverageName}/>

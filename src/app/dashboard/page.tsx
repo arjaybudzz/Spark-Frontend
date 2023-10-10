@@ -22,7 +22,7 @@ const DashBoard = () => {
 
   useEffect(() => {
     getAllPosts();
-  }, [getAllPosts])
+  }, [])
 
   return (
     <div className='flex flex-1 justify-center items-center h-screen bg-homepage-background bg-cover p-16 overflow-hidden overflow-y-scroll'>

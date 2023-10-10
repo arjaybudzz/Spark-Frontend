@@ -26,7 +26,7 @@ const Coverage = () => {
 
   useEffect(() => {
     getCoverage();
-  }, [getCoverage])
+  }, [])
 
 
   return (

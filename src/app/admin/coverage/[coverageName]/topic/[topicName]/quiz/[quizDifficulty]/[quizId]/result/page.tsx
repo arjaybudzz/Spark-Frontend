@@ -24,7 +24,7 @@ const Result = () => {
 
     useEffect(() => {
         getResult();
-    }, [getResult])
+    }, [])
 
 
   return (

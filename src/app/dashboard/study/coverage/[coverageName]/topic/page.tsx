@@ -33,7 +33,7 @@ const TopicList = () => {
 
     useEffect(() => {
       getTopics();
-    }, [getTopics])
+    }, [])
 
     console.log(topicArray);
 

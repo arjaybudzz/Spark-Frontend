@@ -35,7 +35,7 @@ const SelectedQuiz = () => {
 
     useEffect(() => {
         getQuizItems(pageNum);
-    }, [pageNum])
+    }, [])
 
 
   return (

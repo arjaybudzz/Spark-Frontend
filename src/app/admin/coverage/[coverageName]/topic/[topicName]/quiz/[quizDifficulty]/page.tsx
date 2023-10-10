@@ -31,7 +31,7 @@ const QuizList = () => {
 
   useEffect(() => {
     getQuizzes();
-  }, [getQuizzes])
+  }, [])
 
   return (
     <div className='flex flex-col w-screen h-screen justify-start items-center bg-homepage-background bg-cover p-6 gap-6'>
