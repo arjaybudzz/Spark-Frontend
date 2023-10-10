@@ -128,7 +128,7 @@ const Post = (props: {[key: string]: any}) => {
 
     useEffect(() => {
         getUpVoteAndDownVote();
-    }, [getUpVoteAndDownVote])
+    })
 
 
   return (
