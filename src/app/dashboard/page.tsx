@@ -4,8 +4,10 @@ import CreatePost from '@/components/createpost/CreatePost'
 import Post from '@/components/post/Post'
 import React, { useEffect, useState } from 'react'
 import axios, { AxiosResponse } from 'axios'
+import { useRouter } from 'next/navigation'
 
 const DashBoard = () => {
+  const router = useRouter();
   const [postList, setPostList] = useState<object[]>([]);
 
   const getAllPosts = async(): Promise<void> => {
@@ -30,7 +32,7 @@ const DashBoard = () => {
         <CreatePost />
         {
           postList.map((element: {[key: string]: any}) => {
-            return <Post userId={element.relationships.user.data.id} body={element.attributes.body} upVote={element.attributes.upvote} downVote={element.attributes.downvote} key={element.id} postId={element.id} postFunction={getAllPosts} />
+            return <Post userId={element.relationships.user.data.id} key={element.id} postId={element.id} postFunction={router.refresh} />
           })
         }
       </div>
