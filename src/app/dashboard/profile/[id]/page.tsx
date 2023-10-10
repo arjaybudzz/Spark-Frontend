@@ -41,7 +41,7 @@ const Profile = () => {
   return (
     <div className='flex flex-1 justify-center items-center h-screen bg-slate-800 pt-16'>
         <div className='flex flex-row flex-1 h-full'>
-            <div className='flex flex-col items-center w-1/4 h-full p-4 gap-4'>
+            <div className='flex flex-col flex-wrap items-center w-1/4 h-full p-4 gap-4'>
                 <div className='flex flex-row items-center w-full h-auto justify-between p-4'>
                     <h1 className='text-md text-gray-300'>
                         Full name:
