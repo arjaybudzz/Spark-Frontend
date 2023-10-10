@@ -6,7 +6,7 @@ import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
 import axios, { AxiosResponse } from 'axios';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 const AdminRegisterForm = () => {
   const router = useRouter();
