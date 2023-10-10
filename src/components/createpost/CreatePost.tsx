@@ -1,9 +1,6 @@
 'use client';
 
 import React, { useState} from 'react'
-import * as yup from 'yup'
-import { yupResolver } from '@hookform/resolvers/yup';
-import { useForm } from 'react-hook-form'
 import axios, { AxiosResponse } from 'axios';
 
 const CreatePost = () => {

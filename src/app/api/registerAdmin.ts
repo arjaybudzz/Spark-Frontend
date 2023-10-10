@@ -1,5 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
 import type { User } from '@/models/user';
+import { redirect } from 'next/navigation'
 
 const registerAdmin = async (data: User): Promise<void> => {
     const url = `https://spark-9bqv.onrender.com/api/v1/admins`;
@@ -13,6 +14,7 @@ const registerAdmin = async (data: User): Promise<void> => {
         password_confirmation: data.passwordConfirmation
     }).then((response: AxiosResponse<any, any>) => {
         console.log(response);
+        redirect("/admin");
     }).catch((errors) => console.log(errors))
 }
 

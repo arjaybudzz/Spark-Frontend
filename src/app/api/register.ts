@@ -1,5 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
 import type { User } from '@/models/user';
+import { redirect } from 'next/navigation';
 
 const registerUser = async (data: User): Promise<void> => {
     const url = `https://spark-9bqv.onrender.com/api/v1/users`;
@@ -18,6 +19,7 @@ const registerUser = async (data: User): Promise<void> => {
         }
     }).then((response: AxiosResponse<any, any>) => {
         console.log(response);
+        redirect("/");
     }).catch((errors) => console.log(errors))
 }
 
