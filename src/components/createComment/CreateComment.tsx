@@ -2,8 +2,19 @@
 
 import React, { useEffect, useState } from 'react'
 import axios, { AxiosResponse } from 'axios';
+import * as yup from 'yup'
+import { useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup';
+import { redirect } from 'next/navigation';
 
 const CreateComment = (props: {[key: string]: any}) => {
+  const validation = yup.object().shape({
+    body: yup.string().required(),
+  })
+
+  const { register, handleSubmit } = useForm({
+    resolver: yupResolver(validation)
+  })
 
   const [commentBody, setCommentBody] = useState<string>("");
   const [userInfo, setUserInfo] = useState<{[key: string]: any}>({});
@@ -24,6 +35,7 @@ const CreateComment = (props: {[key: string]: any}) => {
       }
     }).then((response: AxiosResponse<any, any>) => {
       console.log(response);
+      redirect("/dashboard")
     }).catch((errors) => console.log(errors))
   }
 
@@ -44,8 +56,9 @@ const CreateComment = (props: {[key: string]: any}) => {
       className='flex-row flex-1 h-auto bg-slate-900 p-4 mt-6 justify-between items-center'
       style={{display: props.isCommentClicked? "flex" : "none"}}
       method='POST'
-      onSubmit={uploadComment}>
+      onSubmit={handleSubmit(uploadComment)}>
       <textarea
+        {...register("body")}
         className='w-3/4 outline-none h-auto rounded-xl p-2 bg-slate-500'
         onChange={updateComment}/>
       <button
