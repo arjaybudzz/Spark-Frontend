@@ -5,9 +5,12 @@ import type { User } from '@/models/user'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
-import registerUser from '@/app/api/register';
+import axios, { AxiosResponse } from 'axios';
+import { useRouter } from 'next/navigation';
 
 const RegisterForm = (props: {[key: string]: any}) => {
+  const router = useRouter();
+
   const [userRegister, setUserRegister] = useState<User>({
     firstName: '',
     middleName: '',
@@ -53,6 +56,27 @@ const RegisterForm = (props: {[key: string]: any}) => {
   const updatePasswordConfirmation = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setUserRegister({...userRegister, passwordConfirmation: event.target.value});
   };
+
+  const registerUser = async (data: User): Promise<void> => {
+    const url = `https://spark-9bqv.onrender.com/api/v1/users`;
+
+    await axios.post(url, {
+        first_name: data.firstName,
+        middle_name: data.middleName,
+        last_name: data.lastName,
+        email: data.email,
+        password: data.password,
+        password_confirmation: data.passwordConfirmation
+    },{
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `${localStorage.getItem("adminToken")}`
+        }
+    }).then((response: AxiosResponse<any, any>) => {
+        console.log(response);
+        router.push("/");
+    }).catch((errors) => console.log(errors))
+  }
 
   return (
     <div className="flex flex-col flex-1 justify-center items-center">

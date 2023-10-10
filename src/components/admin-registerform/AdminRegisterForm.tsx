@@ -5,9 +5,12 @@ import type { User } from '@/models/user'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
-import registerAdmin from '@/app/api/registerAdmin';
+import axios, { AxiosResponse } from 'axios';
+import { useRouter } from 'next/router';
 
 const AdminRegisterForm = () => {
+  const router = useRouter();
+
   const [userRegister, setUserRegister] = useState<User>({
     firstName: '',
     middleName: '',
@@ -53,6 +56,22 @@ const AdminRegisterForm = () => {
   const updatePasswordConfirmation = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setUserRegister({...userRegister, passwordConfirmation: event.target.value});
   };
+
+  const registerAdmin = async (data: User): Promise<void> => {
+    const url = `https://spark-9bqv.onrender.com/api/v1/admins`;
+
+    await axios.post(url, {
+        first_name: data.firstName,
+        middle_name: data.middleName,
+        last_name: data.lastName,
+        email: data.email,
+        password: data.password,
+        password_confirmation: data.passwordConfirmation
+    }).then((response: AxiosResponse<any, any>) => {
+        console.log(response);
+        router.push("/admin");
+    }).catch((errors) => console.log(errors))
+  }
 
   return (
     <div className="flex flex-col flex-1 justify-center items-center">

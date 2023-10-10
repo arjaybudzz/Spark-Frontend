@@ -139,7 +139,7 @@ const Comment = (props: {[key: string]: any}) => {
 
   useEffect(() => {
     getUpVoteAndDownVote();
-  }, [getUpVoteAndDownVote])
+  })
 
   return (
     <div
