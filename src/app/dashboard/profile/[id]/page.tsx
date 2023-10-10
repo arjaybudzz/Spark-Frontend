@@ -80,7 +80,7 @@ const Profile = () => {
                 <div className='flex flex-col gap-6 p-16 flex-1'>
                     {
                         postId.map((id: string) => {
-                            return <Post key={id} postId={id} userId={userId}/>
+                            return <Post key={id} postId={id} userId={userId} />
                         })
                     }
                 </div>

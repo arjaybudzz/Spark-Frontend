@@ -15,9 +15,9 @@ const Post = (props: {[key: string]: any}) => {
     const [isUpvoteClicked, setIsUpvoteClicked] = useState<boolean>(false);
     const [isDownvoteClicked, setIsDownvoteClicked] = useState<boolean>(false);
     const [isCommentClicked, setIsCommentClicked] = useState<boolean>(false);
-    const [numUpvote, setNumUpVote] = useState<number>(props.upVote);
-    const [numDownvote, setNumDownVote] = useState<number>(props.downVote);
-    const [postContent, setPostContent] = useState<string>(props.body);
+    const [numUpvote, setNumUpVote] = useState<number>(0);
+    const [numDownvote, setNumDownVote] = useState<number>(0);
+    const [postContent, setPostContent] = useState<string>("");
     const [isEditedClicked, setIsEditedClicked] = useState<boolean>(false);
     const [userInfo, setUserInfo] = useState<{[key: string]: any}>({})
     const [commentsId, setCommentsId] = useState<string[]>([]);
@@ -26,7 +26,6 @@ const Post = (props: {[key: string]: any}) => {
     const updatePostContent = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
         setPostContent(event.target.value);
     }
-
 
     const updateisUpvoteClicked = (): void => {
         setIsUpvoteClicked(!isUpvoteClicked);
@@ -82,6 +81,18 @@ const Post = (props: {[key: string]: any}) => {
         }).catch((errors) => console.log(errors))
     }
 
+    const getPost = async(): Promise<void> => {
+        const url = `https://spark-9bqv.onrender.com/api/v1/posts/${props.postId}`;
+
+        await axios.get(url).then((response: AxiosResponse<any, any>) => {
+            console.log(response.data.data.id);
+            console.log(response.data.data.attributes);
+            setPostContent(response.data.data.attributes.body);
+            setNumDownVote(response.data.data.attributes.downvote);
+            setNumUpVote(response.data.data.attributes.upvote);
+        }).catch((errors) => console.log(errors))
+    }
+
     const getUpVoteAndDownVote = async(): Promise<void> => {
         const url = `https://spark-9bqv.onrender.com/api/v1/posts/${props.postId}`;
         await axios.get(url).then((response: AxiosResponse<any, any>) => {
@@ -124,6 +135,7 @@ const Post = (props: {[key: string]: any}) => {
     useEffect(() => {
         getOwner();
         getCommentsId();
+        getPost();
     }, [])
 
     useEffect(() => {
