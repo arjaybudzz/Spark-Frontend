@@ -13,7 +13,7 @@ const Coverage = () => {
   const [coverage, setCoverage] = useState<{[key: string]: any}[]>([])
 
   const getCoverage = async(): Promise<void> => {
-    const url = 'http://0.0.0.0:3001/api/v1/subject_coverages';
+    const url = 'https://spark-9bqv.onrender.com/api/v1/subject_coverages';
 
     await axios.get(url).then((response: AxiosResponse<any ,any>) => {
       console.log(response.data.data);
