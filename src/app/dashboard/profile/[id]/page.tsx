@@ -51,20 +51,20 @@ const Profile = () => {
                     </h1>
                 </div>
 
-                <div className='flex flex-row items-center h-auto justify-between p-4'>
-                    <h1 className='text-xl text-gray-300'>
+                <div className='flex flex-row items-center w-full h-auto justify-between p-4'>
+                    <h1 className='text-md text-gray-300'>
                         Email:
                     </h1>
-                    <h1 className='text-xl text-white'>
+                    <h1 className='text-md text-white'>
                         {email}
                     </h1>
                 </div>
 
-                <div className='flex flex-row items-center h-auto justify-between p-4'>
-                    <h1 className='text-xl text-gray-300'>
+                <div className='flex flex-row items-center w-full h-auto justify-between p-4'>
+                    <h1 className='text-md text-gray-300'>
                         Credibility:
                     </h1>
-                    <h1 className='text-xl text-white'>
+                    <h1 className='text-md text-white'>
                         {credibility}
                     </h1>
                 </div>
