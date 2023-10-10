@@ -58,7 +58,7 @@ const Post = (props: {[key: string]: any}) => {
             }
         }).then((response: AxiosResponse<any, any>) => {
             console.log(response)
-            props.postFunction;
+            props.postFunction();
         }).catch((errors) => console.log(errors))
     }
 

@@ -30,7 +30,7 @@ const DashBoard = () => {
         <CreatePost />
         {
           postList.map((element: {[key: string]: any}) => {
-            return <Post userId={element.relationships.user.data.id} body={element.attributes.body} upVote={element.attributes.upvote} downVote={element.attributes.downvote} key={element.id} postId={element.id} postFunction={getAllPosts()} />
+            return <Post userId={element.relationships.user.data.id} body={element.attributes.body} upVote={element.attributes.upvote} downVote={element.attributes.downvote} key={element.id} postId={element.id} postFunction={getAllPosts} />
           })
         }
       </div>
