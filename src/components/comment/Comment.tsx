@@ -9,8 +9,19 @@ import { useState, useEffect } from 'react';
 import type { Comment } from '@/models/comment';
 import CreateReply from '../createReply/CreateReply';
 import axios, { AxiosResponse } from 'axios';
+import * as yup from 'yup'
+import { useForm }from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup';
+import { redirect } from 'next/navigation'
 
 const Comment = (props: {[key: string]: any}) => {
+  const validation = yup.object().shape({
+    body: yup.string().required()
+  })
+
+  const { register, handleSubmit } = useForm({
+    resolver: yupResolver(validation)
+  })
 
   const [commentBody, setCommentBody] = useState<string>("");
   const [upVote, setUpVote] = useState<number>(0);
@@ -54,12 +65,13 @@ const Comment = (props: {[key: string]: any}) => {
     }).catch((errors) => console.log(errors))
   }
 
-  const updateComment = async(data: string): Promise<void> => {
+  const updateComment = async(): Promise<void> => {
     const url = `https://spark-9bqv.onrender.com/api/v1/comments/${props.commentId}`;
     await axios.put(url, {
-        body: data
+        body: commentBody
     }).then((response: AxiosResponse<any, any>) => {
         console.log(response)
+        redirect("/dashboard");
     }).catch((errors) => console.log(errors))
   }
 
@@ -95,17 +107,7 @@ const Comment = (props: {[key: string]: any}) => {
     const url = `https://spark-9bqv.onrender.com/api/v1/comment_tokens?comment[body]=${commentBody}`;
 
     await axios.post(url).then((response: AxiosResponse<any, any>) => {
-        console.log(response.data.comment_token);
         localStorage.setItem("commentToken", response.data.comment_token);
-    }).catch((errors) => console.log(errors))
-  }
-
-  const editComment = async(data: string): Promise<void> => {
-    const url = `https://spark-9bqv.onrender.com/api/v1/comment/${props.commentId}`;
-    await axios.put(url, {
-        body: data
-    }).then((response: AxiosResponse<any, any>) => {
-        console.log(response)
     }).catch((errors) => console.log(errors))
   }
 
@@ -118,6 +120,7 @@ const Comment = (props: {[key: string]: any}) => {
         }
     }).then((response: AxiosResponse<any, any>) => {
         console.log(response)
+        redirect("/dashboard");
     }).catch((errors) => console.log(errors))
   }
 
@@ -150,8 +153,12 @@ const Comment = (props: {[key: string]: any}) => {
                 <form
                     className='flex flex-col w-full h-auto justify-start items-center gap-2'
                     method='PUT'
-                    onSubmit={() => updateComment(commentBody)}>
-                <textarea value={commentBody} className='w-full h-[200px] p-8 bg-slate-500' onChange={updateCommentBody} required/>
+                    onSubmit={handleSubmit(updateComment)}>
+                <textarea
+                  { ...register("body") }
+                  value={commentBody}
+                  className='w-full h-[200px] p-8 bg-slate-500'
+                  onChange={updateCommentBody} />
                 <button
                     type='submit'
                     className='bg-blue-500 w-[150px] h-11 self-start rounded-xl hover:bg-blue-300 active:bg-blue-500'>

@@ -1,6 +1,5 @@
 'use client'
 
-import CreateSubject from '@/components/createSubject/CreateSubject'
 import Subject from '@/components/subject/Subject'
 import React from 'react'
 import { useState, useEffect } from 'react'

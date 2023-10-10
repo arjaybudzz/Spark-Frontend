@@ -41,7 +41,7 @@ const Post = (props: {[key: string]: any}) => {
     }
 
     const updatePost = async(data: string): Promise<void> => {
-        const url = `http://0.0.0.0:3001/api/v1/posts/${props.postId}`;
+        const url = `https://spark-9bqv.onrender.com/api/v1/posts/${props.postId}`;
         await axios.put(url, {
             body: data
         }).then((response: AxiosResponse<any, any>) => {
@@ -50,7 +50,7 @@ const Post = (props: {[key: string]: any}) => {
     }
 
     const deletePost = async(): Promise<void> => {
-        const url = `http://0.0.0.0:3001/api/v1/posts/${props.postId}`;
+        const url = `https://spark-9bqv.onrender.com/api/v1/posts/${props.postId}`;
         await axios.delete(url, {
             headers: {
                 "Content-Type": "application/json",
@@ -63,7 +63,7 @@ const Post = (props: {[key: string]: any}) => {
     }
 
     const storePostToken = async(): Promise<void> => {
-        const url = `http://0.0.0.0:3001/api/v1/post_tokens?post[body]=${props.body}`;
+        const url = `https://spark-9bqv.onrender.com/api/v1/post_tokens?post[body]=${props.body}`;
 
         await axios.post(url).then((response: AxiosResponse<any, any>) => {
             console.log(response.data.post_token);
@@ -72,7 +72,7 @@ const Post = (props: {[key: string]: any}) => {
     }
 
     const getOwner = async(): Promise<void> => {
-        const url = `http://0.0.0.0:3001/api/v1/users/${props.userId}`;
+        const url = `https://spark-9bqv.onrender.com/api/v1/users/${props.userId}`;
 
         await axios.get(url).then((response: AxiosResponse<any, any>) => {
             console.log(response.data.data.id);
@@ -83,7 +83,7 @@ const Post = (props: {[key: string]: any}) => {
     }
 
     const getUpVoteAndDownVote = async(): Promise<void> => {
-        const url = `http://0.0.0.0:3001/api/v1/posts/${props.postId}`;
+        const url = `https://spark-9bqv.onrender.com/api/v1/posts/${props.postId}`;
         await axios.get(url).then((response: AxiosResponse<any, any>) => {
             console.log(response.data.data.relationships.comments.data);
             setNumUpVote(response.data.data.attributes.upvote);
@@ -92,7 +92,7 @@ const Post = (props: {[key: string]: any}) => {
     }
 
     const upVotePost = async(): Promise<void> => {
-        const url = `http://0.0.0.0:3001/api/v1/posts/${props.postId}`;
+        const url = `https://spark-9bqv.onrender.com/api/v1/posts/${props.postId}`;
         await axios.put(url, {
             upvote: !isUpvoteClicked? numUpvote + 1 : numUpvote - 1
         }).then((response: AxiosResponse<any, any>) => {
