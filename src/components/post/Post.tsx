@@ -62,7 +62,7 @@ const Post = (props: {[key: string]: any}) => {
     }
 
     const storePostToken = async(): Promise<void> => {
-        const url = `https://spark-9bqv.onrender.com/api/v1/post_tokens?post[body]=${props.body}`;
+        const url = `https://spark-9bqv.onrender.com/api/v1/post_tokens?post[body]=${postContent}`;
 
         await axios.post(url).then((response: AxiosResponse<any, any>) => {
             console.log(response.data.post_token);
