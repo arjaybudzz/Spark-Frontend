@@ -69,8 +69,8 @@ const QuizItem = (props: {[key: string]: any}) => {
             name='quiz-answer'
             checked={isRadioButtonSelected(props.secondChoice)}
             onClick={() => {
-              setAnswer(props.firstChoice);
-              enterQuizAnswer(props.firstChoice);
+              setAnswer(props.secondChoice);
+              enterQuizAnswer(props.secondChoice);
             }}/>
           <label htmlFor='second-choice-input' className='text-xl text-white'>
             {props.secondChoice}
@@ -85,8 +85,8 @@ const QuizItem = (props: {[key: string]: any}) => {
             name='quiz-answer'
             checked={isRadioButtonSelected(props.thirdChoice)}
             onClick={() => {
-              setAnswer(props.firstChoice);
-              enterQuizAnswer(props.firstChoice);
+              setAnswer(props.thirdChoice);
+              enterQuizAnswer(props.thirdChoice);
             }}/>
           <label htmlFor='third-choice-input' className='text-xl text-white'>
             {props.thirdChoice}
@@ -101,8 +101,8 @@ const QuizItem = (props: {[key: string]: any}) => {
             name='quiz-answer'
             checked={isRadioButtonSelected(props.fourthChoice)}
             onClick={() => {
-              setAnswer(props.firstChoice);
-              enterQuizAnswer(props.firstChoice);
+              setAnswer(props.fourthChoice);
+              enterQuizAnswer(props.fourthChoice);
             }}/>
           <label htmlFor='fourth-choice-input' className='text-xl text-white'>
             {props.fourthChoice}
