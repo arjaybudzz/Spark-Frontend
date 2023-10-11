@@ -1,6 +1,5 @@
 'use client'
 
-import SelectedQuiz from '@/components/selectedQuiz/SelectedQuiz'
 import React, { useState, useEffect } from 'react'
 import axios, { AxiosResponse } from 'axios'
 import Quiz from '@/components/quiz/Quiz'
@@ -13,7 +12,7 @@ const QuizList = () => {
   const [quizId, setQuizId] = useState<string[]>([]);
 
   const getQuizzes = async(): Promise<void> => {
-    const url = `http://0.0.0.0:3001/api/v1/topics/${localStorage.getItem("topicId")}`;
+    const url = `https://spark-9bqv.onrender.com/api/v1/topics/${localStorage.getItem("topicId")}`;
 
     await axios.get(url).then((response: AxiosResponse<any, any>) => {
       const result = response.data.included;
