@@ -66,9 +66,12 @@ const QuizItem = (props: {[key: string]: any}) => {
             name='quiz-answer'
             checked={isRadioButtonSelected(props.firstChoice)}
             onClick={() => {
-              setAnswer(props.firstChoice);
               storeQuizItemToken();
-              enterQuizAnswer(props.firstChoice);
+
+              setTimeout(() => {
+                setAnswer(props.firstChoice);
+                enterQuizAnswer(props.firstChoice);
+              }, 1000)
             }}
             />
           <label htmlFor='first-choice-input' className='text-xl text-white'>
@@ -84,9 +87,12 @@ const QuizItem = (props: {[key: string]: any}) => {
             name='quiz-answer'
             checked={isRadioButtonSelected(props.secondChoice)}
             onClick={() => {
-              setAnswer(props.secondChoice)
               storeQuizItemToken();
-              enterQuizAnswer(props.secondChoice);
+
+              setTimeout(() => {
+                setAnswer(props.secondChoice);
+                enterQuizAnswer(props.secondChoice);
+              }, 1000)
             }}/>
           <label htmlFor='second-choice-input' className='text-xl text-white'>
             {props.secondChoice}
@@ -101,9 +107,12 @@ const QuizItem = (props: {[key: string]: any}) => {
             name='quiz-answer'
             checked={isRadioButtonSelected(props.thirdChoice)}
             onClick={() => {
-              setAnswer(props.thirdChoice)
               storeQuizItemToken();
-              enterQuizAnswer(props.thirdChoice);
+
+              setTimeout(() => {
+                setAnswer(props.thirdChoice);
+                enterQuizAnswer(props.thirdChoice);
+              }, 1000)
             }}/>
           <label htmlFor='third-choice-input' className='text-xl text-white'>
             {props.thirdChoice}
@@ -118,9 +127,12 @@ const QuizItem = (props: {[key: string]: any}) => {
             name='quiz-answer'
             checked={isRadioButtonSelected(props.fourthChoice)}
             onClick={() => {
-              setAnswer(props.fourthChoice)
               storeQuizItemToken();
-              enterQuizAnswer(props.fourthChoice);
+
+              setTimeout(() => {
+                setAnswer(props.fourthChoice);
+                enterQuizAnswer(props.fourthChoice);
+              }, 1000)
             }}/>
           <label htmlFor='fourth-choice-input' className='text-xl text-white'>
             {props.fourthChoice}
