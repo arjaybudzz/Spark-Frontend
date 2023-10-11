@@ -5,8 +5,10 @@ import Link from 'next/link'
 import { useState } from 'react'
 import CreateQuizItem from '../createQuizItem/CreateQuizItem'
 import axios, { AxiosResponse } from 'axios'
+import { useParams } from 'next/navigation'
 
 const Quiz = (props: {[key: string]: any}) => {
+    const params = useParams();
     const [isAddQuizItemClicked, setIsAddQuizItemClicked] = useState<boolean>(false);
 
     const storeQuizToken = async(): Promise<void> => {
@@ -29,12 +31,22 @@ const Quiz = (props: {[key: string]: any}) => {
             {props.subjectName}
           </h1>
           <div className='flex flex-row w-full gap-4 justify-between items-center'>
-            <Link
-              href={`/${props.subjectFolder}/${props.mode}/${props.coverageName}/topic/${props.topicName}/quiz/${props.difficulty}/${props.quizId}`}
-              className='text-xl text-white hover:underline'
-              >
+            {props.isAdmin?
+              <h1 className='text-xl text-white'>
+                {params.quizDifficulty} - 10 Items
+              </h1>
+            :
+
+            <>
+              <h1 className='text-xl text-white'>
+                {params.quizDifficulty} - 10 Items
+              </h1>
+              <Link
+                href={`/${props.subjectFolder}/${props.mode}/${props.coverageName}/topic/${props.topicName}/quiz/${props.difficulty}/${props.quizId}`}
+                className='text-xl text-white hover:underline'>
                 Start Quiz
-            </Link>
+              </Link>
+            </>}
             {props.isAdmin && <button
               className='bg-blue-500 w-auto p-2 h-9 rounded-lg'
               onClick={() => {
