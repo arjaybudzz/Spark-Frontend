@@ -94,7 +94,7 @@ const Reply = (props: {[key: string]: any}) => {
         await axios.delete(url, {
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": localStorage.getItem("postToken")
+                "Authorization": localStorage.getItem("commentToken")
             }
         }).then((response: AxiosResponse<any, any>) => {
             console.log(response)
