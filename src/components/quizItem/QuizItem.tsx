@@ -24,24 +24,10 @@ const QuizItem = (props: {[key: string]: any}) => {
     getQuizAnswers();
   }, [])
 
-  const storeQuizItemToken = async(): Promise<void> => {
-    const url = `https://spark-9bqv.onrender.com/api/v1/quiz_item_tokens?quiz_item[problem]=${props.quizProblem}`;
-
-    await axios.post(url).then((response: AxiosResponse<any, any>) => {
-      console.log(response.data.quiz_item_token);
-      localStorage.setItem("quizItemToken", response.data.quiz_item_token);
-    }).catch((errors) => console.log(errors))
-  }
-
   const enterQuizAnswer = async(givenAnswer: string): Promise<void> => {
     const url = `https://spark-9bqv.onrender.com/api/v1/quiz_answers/${localStorage.getItem("quizAnswerId")}`;
     await axios.put(url,{
       answer: givenAnswer
-    }, {
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": localStorage.getItem("quizItemToken")
-      }
     }).then((response: AxiosResponse<any, any>) => {
       console.log(response);
     }).catch(errors => console.log(errors))
@@ -66,12 +52,8 @@ const QuizItem = (props: {[key: string]: any}) => {
             name='quiz-answer'
             checked={isRadioButtonSelected(props.firstChoice)}
             onClick={() => {
-              storeQuizItemToken();
-
-              setTimeout(() => {
-                setAnswer(props.firstChoice);
-                enterQuizAnswer(props.firstChoice);
-              }, 1000)
+              setAnswer(props.firstChoice);
+              enterQuizAnswer(props.firstChoice);
             }}
             />
           <label htmlFor='first-choice-input' className='text-xl text-white'>
@@ -87,12 +69,8 @@ const QuizItem = (props: {[key: string]: any}) => {
             name='quiz-answer'
             checked={isRadioButtonSelected(props.secondChoice)}
             onClick={() => {
-              storeQuizItemToken();
-
-              setTimeout(() => {
-                setAnswer(props.secondChoice);
-                enterQuizAnswer(props.secondChoice);
-              }, 1000)
+              setAnswer(props.firstChoice);
+              enterQuizAnswer(props.firstChoice);
             }}/>
           <label htmlFor='second-choice-input' className='text-xl text-white'>
             {props.secondChoice}
@@ -107,12 +85,8 @@ const QuizItem = (props: {[key: string]: any}) => {
             name='quiz-answer'
             checked={isRadioButtonSelected(props.thirdChoice)}
             onClick={() => {
-              storeQuizItemToken();
-
-              setTimeout(() => {
-                setAnswer(props.thirdChoice);
-                enterQuizAnswer(props.thirdChoice);
-              }, 1000)
+              setAnswer(props.firstChoice);
+              enterQuizAnswer(props.firstChoice);
             }}/>
           <label htmlFor='third-choice-input' className='text-xl text-white'>
             {props.thirdChoice}
@@ -127,12 +101,8 @@ const QuizItem = (props: {[key: string]: any}) => {
             name='quiz-answer'
             checked={isRadioButtonSelected(props.fourthChoice)}
             onClick={() => {
-              storeQuizItemToken();
-
-              setTimeout(() => {
-                setAnswer(props.fourthChoice);
-                enterQuizAnswer(props.fourthChoice);
-              }, 1000)
+              setAnswer(props.firstChoice);
+              enterQuizAnswer(props.firstChoice);
             }}/>
           <label htmlFor='fourth-choice-input' className='text-xl text-white'>
             {props.fourthChoice}
