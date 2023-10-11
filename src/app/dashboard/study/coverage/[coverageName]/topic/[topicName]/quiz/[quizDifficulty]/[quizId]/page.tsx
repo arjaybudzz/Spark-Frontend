@@ -70,7 +70,6 @@ const SelectedQuiz = () => {
                   >
                     View Next Problem
                 </button>
-
                 }
       </div>
     </div>

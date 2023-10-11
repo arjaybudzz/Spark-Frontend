@@ -32,7 +32,6 @@ const Coverage = () => {
 
   return (
     <div className='flex flex-col flex-1 h-screen justify-center items-center bg-homepage-background bg-cover p-20 gap-10'>
-      <CreateCoverage />
       <div className='flex flex-row w-full h-screen justify-around items-center'>
         <Mathematics majorFolder={"admin"} coverageName={coverage[0]?.attributes.name} mode={"coverage"}/>
         <Science majorFolder={"admin"} coverageName={coverage[1]?.attributes.name} mode={"coverage"}/>
