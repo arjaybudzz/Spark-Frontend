@@ -2,17 +2,10 @@
 
 import React, { useState, useEffect } from 'react'
 import axios, { AxiosResponse } from 'axios';
-import { setPriority } from 'os';
 
 const QuizItem = (props: {[key: string]: any}) => {
 
   const [answer, setAnswer] = useState<string>("");
-  const [quizAnswerId, setQuizAnswerId] = useState<string>("");
-
-  const updateAnswer = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setAnswer(event.target.value);
-    console.log(answer)
-  }
 
   const getQuizAnswers = async(): Promise<void> => {
     const url = `https://spark-9bqv.onrender.com/api/v1/quiz_items/${props.quizItemId}`;
@@ -55,8 +48,6 @@ const QuizItem = (props: {[key: string]: any}) => {
   }
 
   const isRadioButtonSelected = (value: string): boolean => answer === value
-
-
 
   return (
     <div className='w-3/4 h-auto bg-slate-800 p-4'>
