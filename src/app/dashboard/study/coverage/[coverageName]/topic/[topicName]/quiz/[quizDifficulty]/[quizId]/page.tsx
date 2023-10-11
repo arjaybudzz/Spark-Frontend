@@ -10,7 +10,7 @@ import Link from 'next/link';
 const SelectedQuiz = () => {
     const params = useParams();
     const router = useRouter();
-    const limit = 3;
+    const limit = 10;
     const {quizId} = params;
     const [quizItemList, setQuizItemList] = useState<object[]>([]);
     const [pageNum, setPageNum] = useState<number>(1);
