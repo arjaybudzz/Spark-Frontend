@@ -51,8 +51,11 @@ export const NavBar = () => {
         }
       </div>
 
-      <div className='flex flex-1/4'>
+      <div className='flex flex-1/4 flex-row w-auto'>
         <Link href={`/dashboard/profile/${userId}`} className='text-xl text-white font-bold'>{userName}</Link>
+        <Link href={"/"} className='text-xl text-white font-bold'>
+          Log out
+        </Link>
       </div>
     </div>
   )
