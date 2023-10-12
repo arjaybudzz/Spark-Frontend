@@ -1,6 +1,5 @@
 'use client'
 
-import CreateCoverage from '@/components/createCoverage/CreateCoverage'
 import EEProfSubjects from '@/components/eeprofsubjects/EEProfSubjects'
 import Mathematics from '@/components/mathematics/Mathematics'
 import Science from '@/components/science/Science'
