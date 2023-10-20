@@ -5,7 +5,7 @@ import type { User } from '@/models/user'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
-import registerUser from '@/app/api/register';
+import registerUser from '@/app/api/v1/register';
 
 const AdminRegisterForm = (props: {[key: string]: any}) => {
   const [userRegister, setUserRegister] = useState<User>({

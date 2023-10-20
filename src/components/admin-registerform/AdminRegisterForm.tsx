@@ -1,24 +1,10 @@
-'use client';
-
-import React, { useState } from 'react'
-import type { User } from '@/models/user'
+import React from 'react'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
-import axios, { AxiosResponse } from 'axios';
-import { useRouter } from 'next/navigation';
+import registerAdmin from '@/app/api/v1/registerAdmin';
 
 const AdminRegisterForm = () => {
-  const router = useRouter();
-
-  const [userRegister, setUserRegister] = useState<User>({
-    firstName: '',
-    middleName: '',
-    lastName: '',
-    email: '',
-    password: '',
-    passwordConfirmation: ''
-  });
 
   const validity = yup.object().shape({
     firstName: yup.string().required().min(2).max(30),
@@ -29,49 +15,9 @@ const AdminRegisterForm = () => {
     passwordConfirmation: yup.string().required().min(8).max(20).oneOf([yup.ref("password"), "Passwords do not match!"])
   });
 
-  const { register, handleSubmit } = useForm({
+  const { register } = useForm({
     resolver: yupResolver(validity)
   });
-
-  const updateFirstName = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    setUserRegister({...userRegister, firstName: event.target.value});
-  };
-
-  const updateMiddleName = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    setUserRegister({...userRegister, middleName: event.target.value});
-  };
-
-  const updateLastName = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    setUserRegister({...userRegister, lastName: event.target.value});
-  };
-
-  const updateEmail = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    setUserRegister({...userRegister, email: event.target.value});
-  };
-
-  const updatePassword = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    setUserRegister({...userRegister, password: event.target.value});
-  };
-
-  const updatePasswordConfirmation = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    setUserRegister({...userRegister, passwordConfirmation: event.target.value});
-  };
-
-  const registerAdmin = async (data: User): Promise<void> => {
-    const url = `https://spark-9bqv.onrender.com/api/v1/admins`;
-
-    await axios.post(url, {
-        first_name: data.firstName,
-        middle_name: data.middleName,
-        last_name: data.lastName,
-        email: data.email,
-        password: data.password,
-        password_confirmation: data.passwordConfirmation
-    }).then((response: AxiosResponse<any, any>) => {
-        console.log(response);
-        router.push("/admin");
-    }).catch((errors) => console.log(errors))
-  }
 
   return (
     <div className="flex flex-col flex-1 justify-center items-center">
@@ -81,7 +27,7 @@ const AdminRegisterForm = () => {
       <form
         method="POST"
         className='flex flex-col'
-        onSubmit={handleSubmit(registerAdmin)}>
+        action={registerAdmin}>
         <div className='flex flex-row w-[1000px] justify-between items-center mb-9'>
           <div className='flex flex-row w-[400px] h-auto justify-between items-center'>
             <label
@@ -92,7 +38,7 @@ const AdminRegisterForm = () => {
             <input {...register("firstName")}
               id='first-name-input'
               className='w-[250px] h-10 rounded-xl p-6 outline-none'
-              onChange={updateFirstName}/>
+              name="firstName"/>
           </div>
 
           <div className='flex flex-row w-[400px] h-auto justify-between items-center'>
@@ -105,7 +51,7 @@ const AdminRegisterForm = () => {
               id='middle-name-input'
               className='w-[250px] h-10 rounded-xl p-6 outline-none'
               placeholder='Optional'
-              onChange={updateMiddleName}/>
+              name='middleName'/>
           </div>
         </div>
 
@@ -119,7 +65,7 @@ const AdminRegisterForm = () => {
             <input {...register("lastName")}
               id='last-name-input'
               className='w-[250px] h-10 rounded-xl p-6 outline-none'
-              onChange={updateLastName}/>
+              name='lastName'/>
           </div>
 
           <div className='flex flex-row w-[400px] h-auto justify-between items-center'>
@@ -131,7 +77,7 @@ const AdminRegisterForm = () => {
             <input {...register("email")}
               id='email-input'
               className='w-[250px] h-10 rounded-xl p-6 outline-none'
-              onChange={updateEmail}/>
+              name='email'/>
           </div>
         </div>
 
@@ -146,7 +92,7 @@ const AdminRegisterForm = () => {
               type='password'
               id='password-input'
               className='w-[250px] h-10 rounded-xl p-6 outline-none'
-              onChange={updatePassword}/>
+              name='password'/>
           </div>
 
           <div className='flex flex-row w-[400px] h-auto justify-between items-center'>
@@ -159,7 +105,7 @@ const AdminRegisterForm = () => {
               type='password'
               id='password-confirmation-input'
               className='w-[250px] h-10 rounded-xl p-6 outline-none'
-              onChange={updatePasswordConfirmation}/>
+              name='confirmPassword'/>
           </div>
         </div>
         <button

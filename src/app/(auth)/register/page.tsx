@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 import RegisterForm from '@/components/registerform/RegisterForm';
-import register from '@/app/api/register';
+import register from '@/app/api/v1/register';
 
 const Register = () => {
 

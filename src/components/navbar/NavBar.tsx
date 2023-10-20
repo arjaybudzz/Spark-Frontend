@@ -3,10 +3,10 @@
 
 import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
 import studyIcon from 'src/images/studying.png'
 import axios, { AxiosResponse } from 'axios'
 import { useParams } from 'next/navigation'
+import { Input } from '@mui/material'
 
 const directories = [
   {
@@ -40,15 +40,8 @@ export const NavBar = () => {
       <div className='flex flex-1/4'>
         <Link href="/dashboard" className='text-2xl'>Spark</Link>
       </div>
-
-      <div className='flex flex-1 justify-center items-center gap-14'>
-        {
-          directories.map((link: { [key: string]: any }) => {
-            return <Link href={link.link} key={link.id} className='text-xl'>
-                        <Image src={link.icon} width={35} height={35} alt="icons"/>
-                  </Link>
-          })
-        }
+      <div className="flex w-1/2 justify-center items-center h-10">
+        <Input fullWidth/>
       </div>
 
       <div className='flex flex-1/4 flex-row w-auto gap-6'>

@@ -66,7 +66,6 @@ const Post = (props: {[key: string]: any}) => {
 
         await axios.post(url).then((response: AxiosResponse<any, any>) => {
             console.log(response.data.post_token);
-            localStorage.setItem("postToken", response.data.post_token);
         }).catch((errors) => console.log(errors))
     }
 
@@ -147,7 +146,7 @@ const Post = (props: {[key: string]: any}) => {
     <div className='flex flex-col h-auto flex-4/5 bg-slate-900 p-4 rounded-xl mb-8'>
         <div className='flex flex-row w-full h-11 justify-between items-center'>
             <h1 className='text-xl text-white'>{userInfo.first_name} {userInfo.middle_name} {userInfo.last_name}</h1>
-            {localStorage.getItem("userId") == props.userId && <div className='flex flex-row w-auto h-auto gap-6'>
+            {props.userId && <div className='flex flex-row w-auto h-auto gap-6'>
                     <button className='text-white text-xl' onClick={() => {
                         setIsEditedClicked(!isEditedClicked);
                         storePostToken();
@@ -176,7 +175,7 @@ const Post = (props: {[key: string]: any}) => {
                 </form>
             :
             <p className='text-lg text-white indent-7 text-justify break-all'>
-                {postContent}
+                {props.body}
             </p>
 
             }
