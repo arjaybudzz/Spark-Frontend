@@ -14,11 +14,6 @@ const registerUser = async (data: FormData): Promise<void> => {
         email: data.get("email"),
         password: data.get("password"),
         password_confirmation: data.get("passwordConfirmation")
-    },{
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": cookies().get("adminToken")?.value
-        }
     }).then((response: AxiosResponse<any, any>) => {
         revalidateTag('users');
     }).catch((errors) => console.log(errors))

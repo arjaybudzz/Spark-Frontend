@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import loginUser from '@/app/api/v1/login';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 const LoginForm = () => {
   const router = useRouter();
@@ -26,6 +27,7 @@ const LoginForm = () => {
 
   return (
     <div className="flex flex-col justify-center items-center flex-1 h-screen relative p-6">
+      <h1 className='text-4xl text-white'>Welcome to Spark</h1>
         <h1 className="text-xl text-white self-center mb-6">Login your profile now!</h1>
         <form
           method="POST"
@@ -54,6 +56,8 @@ const LoginForm = () => {
             Submit
           </button>
         </form>
+
+        <h1 className='mt-10 text-white text-xl'>Don&apos;t have an account? Sign up <Link href={"/register"} className='text-blue-500'>here.</Link></h1>
       </div>
   )
 }
